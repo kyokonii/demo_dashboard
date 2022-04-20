@@ -13,7 +13,7 @@ def app():
     now_rjust = '{:<30}'.format(now_str)
 
     #データの準備
-    df = pd.read_csv('./power_consumption_dunmmy.csv')
+    df = pd.read_csv('./data/power_consumption_dunmmy.csv')
 
     #空白値の削除
     df = df.dropna()
