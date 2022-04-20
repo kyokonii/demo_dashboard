@@ -120,7 +120,7 @@ def app():
 
     st.subheader('消費電力詳細テーブル')
     df_table = df
-    df_table['消費電力'] = df_table['消費電力'].astype('int') * 10
+    df_table['消費電力'] = df_table['消費電力'].astype('int') / 10
     df_table.rename(columns={'消費電力': '消費電力量(kWh)'})
     st.dataframe(df_table.style.highlight_max(axis=0), width=800)
 
