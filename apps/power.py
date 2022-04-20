@@ -100,7 +100,7 @@ def app():
 
     #main画面
     st.title('消費電力ダッシュボード')
-    st.write(now_rjust)
+    #st.write(now_rjust)
 
     #card用に4カラム追加
     column1, column2, column3, column4 = st.columns(4)
