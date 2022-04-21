@@ -36,7 +36,7 @@ def app():
         fig = px.line(df, x="Datetime", y="Failure rate", color="product_name",)
         st.plotly_chart(fig, use_container_width=True )
 
-    st.set_page_config(layout="wide")
+    #st.set_page_config(layout="wide")
     st.title = "QCDの見える化"
     st.sidebar.write("FilterBox")
     st.sidebar.selectbox("test",product_names)
