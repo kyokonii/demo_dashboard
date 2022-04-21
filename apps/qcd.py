@@ -37,7 +37,7 @@ def app():
         st.plotly_chart(fig, use_container_width=True )
 
     #st.set_page_config(layout="wide")
-    st.title("QCDの見える化")
+    st.title('QCDの見える化')
     st.sidebar.write("FilterBox")
     st.sidebar.selectbox("test",product_names)
 
