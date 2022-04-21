@@ -6,9 +6,8 @@ import plotly.express as px
 from plotly.subplots import make_subplots
 import datetime
 
-
 def app():
-    st.title('QCDダッシュボード')
+
     df= pd.read_csv("./data/data.csv")
 
     product_names =df["product_name"].unique()
