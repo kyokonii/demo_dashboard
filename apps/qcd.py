@@ -7,6 +7,7 @@ from plotly.subplots import make_subplots
 import datetime
 
 def app():
+<<<<<<< HEAD
 
     df= pd.read_csv("./data/data.csv")
 
@@ -50,3 +51,6 @@ def app():
     plot_defeat_rate()
 
     st.table(df.head())
+=======
+  st.title('QCDダッシュボード')
+>>>>>>> bde54622b49912be8ef5d519c39cee809b2854d0

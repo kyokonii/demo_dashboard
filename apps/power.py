@@ -13,7 +13,7 @@ def app():
     now_rjust = '{:<30}'.format(now_str)
 
     #データの準備
-    df = pd.read_csv('./power_consumption_dunmmy.csv')
+    df = pd.read_csv('./data/power_consumption_dunmmy.csv')
 
     #空白値の削除
     df = df.dropna()
@@ -100,7 +100,7 @@ def app():
 
     #main画面
     st.title('消費電力ダッシュボード')
-    st.write(now_rjust)
+    #st.write(now_rjust)
 
     #card用に4カラム追加
     column1, column2, column3, column4 = st.columns(4)
@@ -120,7 +120,8 @@ def app():
 
     st.subheader('消費電力詳細テーブル')
     df_table = df
-    df_table['消費電力'] = df_table['消費電力'].astype('int') * 10
-    df_table.rename(columns={'消費電力': '消費電力量(kWh)'})
+    df_table['消費電力'] = df_table['消費電力'].astype('int') / 10
+    df_table.columns = ['Month', 'Factory', 'Line', 'Distribution board', 'Power consumption (kWh)']
+    #df_table.rename(columns={'消費電力': '消費電力量(kWh)'})
     st.dataframe(df_table.style.highlight_max(axis=0), width=800)
 
