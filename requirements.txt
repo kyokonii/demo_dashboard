@@ -3,4 +3,4 @@ numpy
 pandas
 plotly
 matplotlib
-cv2
+opencv-python-headless
