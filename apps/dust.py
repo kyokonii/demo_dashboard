@@ -44,7 +44,7 @@ def app():
     )
     """
     #カレンダーから開始日と終了日を選択する
-    date_range = st.sidebar.date_input("Period", [datetime.date(2022, 1,1), datetime.date(2022, 4, 21) ])
+    date_range = st.sidebar.date_input('期間を選択', [datetime.date(2022, 1,1), datetime.date(2022, 4, 21) ])
     start = datetime.datetime.combine(date_range[0], datetime.datetime.min.time())
     end = datetime.datetime.combine(date_range[1], datetime.datetime.min.time())
 
