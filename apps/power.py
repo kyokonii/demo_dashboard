@@ -120,7 +120,7 @@ def app():
     column6.plotly_chart(fig_line, use_container_width=True)
 
     st.subheader('消費電力詳細テーブル')
-    df_table = df['月', '工場名', '消費電力']
+    df_table = df[['月', '工場名', '消費電力']]
     df_table['消費電力'] = df_table['消費電力'].astype('int') / 10
     df_table.columns = ['Month', 'Process', 'Power consumption (kWh)']
     #df_table.rename(columns={'消費電力': '消費電力量(kWh)'})
