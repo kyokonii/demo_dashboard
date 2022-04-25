@@ -61,7 +61,7 @@ def app():
     column2.write('平均粉じん量が1.2ug/m^3未満の場合は緑、1.2以上1.3未満は青、1.3以上は赤で示されます。')
 
     # 1枚目の画像を読み取り
-    img = cv2.imread('./data/streamlit-multiapps/data/diagram.png')
+    img = cv2.imread('./data/diagram.png')
 
     #センサーごとの埃の量の平均値をマップにplot
     sensors = df_merge['sensor_id'].unique()
