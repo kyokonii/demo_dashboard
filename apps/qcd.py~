@@ -9,7 +9,6 @@ import datetime
 def app():
 
     df= pd.read_csv("./data/data.csv")
-    df= 
 
     product_names =df["product_name"].unique()
 

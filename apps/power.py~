@@ -17,7 +17,6 @@ def app():
 
     #空白値の削除
     df = df.dropna()
-    df = df.replace ({'塗装':'混合', '溶接':'成形', 'プレス':'焼結', '組立':'サイジング', '検査':'真空含浸'})
     df = df.sort_values(by='月', ascending=False)
     m_order = ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月']
     df['月'] = sorted(df['月'], key=m_order.index)
@@ -37,7 +36,7 @@ def app():
     #サイドバーで工場を選択できるようにする
     line_list = list(df['工場名'].unique())
     selected_line = st.sidebar.multiselect(
-        '表示する工程を選択：',
+        '表示する工場を選択：',
         line_list,
         line_list
     )
@@ -61,7 +60,7 @@ def app():
             connectgaps=True
             ))
     fig_line.update_layout (
-        title_text="工程別 消費電力量 月別推移")
+        title_text="工場別 消費電力量 月別推移")
 
     #総電力
     df_line = df[['月', '消費電力']].groupby('月', as_index=False).sum()
@@ -81,7 +80,7 @@ def app():
             name = col
             ))
     fig_bar.update_layout (
-        title_text="工程別消費電力量推移", barmode='stack')
+        title_text="工場別消費電力量推移", barmode='stack')
 
     # fig_bar = go.Figure(data=data, layout=layout)
 
@@ -120,9 +119,9 @@ def app():
     column6.plotly_chart(fig_line, use_container_width=True)
 
     st.subheader('消費電力詳細テーブル')
-    df_table = df['月', '工場名', '消費電力']
+    df_table = df
     df_table['消費電力'] = df_table['消費電力'].astype('int') / 10
-    df_table.columns = ['Month', 'Process', 'Power consumption (kWh)']
+    df_table.columns = ['Month', 'Factory', 'Line', 'Distribution board', 'Power consumption (kWh)']
     #df_table.rename(columns={'消費電力': '消費電力量(kWh)'})
     st.dataframe(df_table.style.highlight_max(axis=0), width=800)
 
