@@ -35,15 +35,22 @@ def app():
     st.sidebar.write('フィルター')
 
     #サイドバーで日付を選択できるようにする
+    """
     month_list = list(df_merge['Datetime'].unique())
     selected_month = st.sidebar.multiselect(
         '表示する月を選択：',
         month_list,
         month_list
     )
+    """
+    #カレンダーから開始日と終了日を選択する
+    date_range = st.sidebar.date_input("Period", [datetime.date(2022, 1,1), datetime.date(2022, 4, 21) ])
+    start = datetime.datetime.combine(date_range[0], datetime.datetime.min.time())
+    end = datetime.datetime.combine(date_range[1], datetime.datetime.min.time())
 
     #選ばれた月と工場が反映されるようにdf_mergeを更新
-    df_merge = df_merge[df_merge['Datetime'].isin(selected_month)]
+    df_merge = df_merge[(pd.to_datetime(df_merge['Datetime']) >= start) & (pd.to_datetime(df_merge['Datetime']) <= end)]
+    #df_merge = df_merge[df_merge['Datetime'].isin(selected_month)]
 
     df_pivot = pd.pivot_table(df_merge, values='concentration (ug/m^3)', index=['Datetime'],columns='センサー設置場所', aggfunc=np.sum)
 
