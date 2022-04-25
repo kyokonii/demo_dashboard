@@ -77,8 +77,8 @@ def app():
         #print(param['concentration (ug/m^3)'].mean())
         cv2.circle(img,
         center=( param['x座標'].min(), param['y座標'].min()),
-        radius= 30 if param['concentration (ug/m^3)'].mean() <= 1.2 else 40 if 1.2 <= param['concentration (ug/m^3)'].mean() < 1.3 else 60 ,
-        color=(0, 255, 0) if param['concentration (ug/m^3)'].mean() <= 1.2 else (0, 0, 255) if 1.2 <= param['concentration (ug/m^3)'].mean() < 1.3 else (255, 0, 0),
+        radius= 30 if param['concentration (ug/m^3)'].mean() < 1.2 else 40 if 1.2 <= param['concentration (ug/m^3)'].mean() < 1.3 else 60 ,
+        color=(0, 255, 0) if param['concentration (ug/m^3)'].mean() < 1.2 else (0, 0, 255) if 1.2 <= param['concentration (ug/m^3)'].mean() < 1.3 else (255, 0, 0),
         thickness=-1,
         lineType=cv2.LINE_4,
         shift=0)
