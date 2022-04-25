@@ -61,7 +61,7 @@ def app():
     column1.subheader('粉じん量詳細テーブル')
     df_table = df_merge[['Datetime', 'sensor_id', 'concentration (ug/m^3)', 'センサー設置場所']]
     df_table = df_table.sort_values('Datetime')
-    column1.dataframe(df_table.style.highlight_max(axis=0), width=800)
+    column1.dataframe(df_table)
 
     #マッピング
     column2.subheader('エリア別平均粉じん量')
